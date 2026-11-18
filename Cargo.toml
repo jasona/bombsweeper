@@ -1,0 +1,28 @@
+[package]
+name = "bombsweeper"
+version = "0.1.0"
+edition = "2024"
+description = "A tactile, GPU-rendered modern edition of classic Minesweeper built with Rust and Rune."
+license = "MIT"
+
+[dependencies]
+rune = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd", features = ["tooling"] }
+rune-kit = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd", default-features = false }
+serde = { version = "1", features = ["derive"] }
+
+[patch.crates-io]
+wgpu-hal = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd" }
+winit = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd" }
+parley_engine = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd" }
+accesskit_windows = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd" }
+accesskit_macos = { git = "https://github.com/anomalyco/rune", rev = "db7c080eb7e7813e643b58c6905cdca5af01b4dd" }
+
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.release]
+codegen-units = 16
+incremental = true

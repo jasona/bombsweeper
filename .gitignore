@@ -1,0 +1,5 @@
+/target/
+*.png
+*.mp4
+*.jsonl
+.DS_Store
